@@ -1,3 +1,3 @@
-import soundOn from './soundOn.svg';
-import soundOff from './soundOff.svg';
+import soundOn from './soundOn.png';
+import soundOff from './soundOff.png';
 export { soundOn, soundOff };
