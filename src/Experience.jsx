@@ -26,6 +26,34 @@ export default function Experience() {
         controls.current.maxAzimuthAngle = Math.PI / 4
     }
 
+    // Freeze orbital controls on scroll for small screens
+    useEffect(() => {
+      const freezeControls = () => {
+        if (window.innerWidth < 1024 && controls.current) {
+          controls.current.enabled = false;
+        }
+      };
+      const unfreezeControls = () => {
+        if (window.innerWidth < 1024 && controls.current) {
+          controls.current.enabled = true;
+        }
+      };
+      window.addEventListener('touchstart', freezeControls, { passive: true });
+      window.addEventListener('touchend', unfreezeControls, { passive: true });
+      window.addEventListener('mousedown', freezeControls, { passive: true });
+      window.addEventListener('mouseup', unfreezeControls, { passive: true });
+      window.addEventListener('scroll', freezeControls, { passive: true });
+      window.addEventListener('resize', unfreezeControls);
+      return () => {
+        window.removeEventListener('touchstart', freezeControls);
+        window.removeEventListener('touchend', unfreezeControls);
+        window.removeEventListener('mousedown', freezeControls);
+        window.removeEventListener('mouseup', unfreezeControls);
+        window.removeEventListener('scroll', freezeControls);
+        window.removeEventListener('resize', unfreezeControls);
+      };
+    }, []);
+
 
 // Setup audio and autoplay on mount
 useEffect(() => {
@@ -80,7 +108,7 @@ useEffect(() => {
             polar={[-0.4, 0.2]}
             azimuth={[-1, 0.75]}
             config={{ mass: 2, tension: 400 }}
-            snap={{ ass: 2, tension: 400 }}
+            snap={{ mass: 2, tension: 400 }}
         >
 
 
