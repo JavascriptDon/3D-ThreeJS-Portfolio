@@ -41,8 +41,6 @@ background: #000;
 /* On small screens, make iframe fill parent and allow scrolling */
 @media (max-width: 600px) {
   .htmlScreen iframe {
-    min-width: 280px;
-    min-height: 400px;
     max-width: 100vw;
     max-height: 60vh;
     overflow: auto;
