@@ -137,7 +137,7 @@ useEffect(() => {
             blur={2.4}
         />
         <Html fullscreen>
-        <div className='absolute bottom-4 left-12'>
+        <div className='hidden-icon-desktop'>
             <img
             src={isPlayingMusic ? soundOn : soundOff}
             alt="sound"

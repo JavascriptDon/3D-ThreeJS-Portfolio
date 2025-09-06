@@ -23,3 +23,15 @@ border: none;
 border-radius: 20px;
 background: #000;
 }
+
+.hidden-icon-desktop{
+    display: none;
+}
+@media (min-width: 1024px) {
+  .hidden-icon-desktop{
+    display: block;
+    position: absolute;
+    bottom: 1rem;
+    left: 3rem;
+  }
+}
