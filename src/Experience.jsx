@@ -4,7 +4,7 @@ import {soundOn, soundOff} from './assets/icons/index.js';
 import audioDevfolio from '../public/music/dev.mp3';
 
 export default function Experience() {
-    //Loads a MacBook 3D model.
+    //Loads a MacBook 3D model. Use ./assets/models/macbook/model.gltf for local.
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
 
     // reference to camera controls
