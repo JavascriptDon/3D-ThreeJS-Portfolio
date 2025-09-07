@@ -64,31 +64,6 @@ useEffect(() => {
     intro()
   }, [])
 
-    // Freeze orbital controls while scrolling on small screens
-    useEffect(() => {
-      const isMobile = window.innerWidth < 1024;
-      if (!isMobile || !controls.current) return;
-
-      let timeoutId = null;
-      const freezeControls = () => {
-        if (controls.current) controls.current.enabled = false;
-        clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-          if (controls.current) controls.current.enabled = true;
-        }, 350);
-      };
-
-      window.addEventListener('touchmove', freezeControls, { passive: true });
-      window.addEventListener('scroll', freezeControls, { passive: true });
-
-      return () => {
-        window.removeEventListener('touchmove', freezeControls);
-        window.removeEventListener('scroll', freezeControls);
-        clearTimeout(timeoutId);
-        if (controls.current) controls.current.enabled = true;
-      };
-    }, []);
-
 
     return <>
 
