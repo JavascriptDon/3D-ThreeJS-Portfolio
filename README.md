@@ -22,11 +22,34 @@ node -v
 npm -v
 ```
 
+## Getting Started
+
+Clone the repository.
+
+```
+git clone https://github.com/JavascriptDon/3D-ThreeJS-Portfolio.git
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Start exploring from localhost:
+
+```
+npm run dev
+```
 ## Preview
 
 
 https://github.com/user-attachments/assets/42998528-ba46-4dd5-8d11-5f49d21a4560
 
+
+Tip for Mobile screens:
+
+Switch to landscape then switch back to portrait. 
 
 
 ## 🛡️ License

@@ -1,7 +1,5 @@
 import { CameraControls, Text, Html, ContactShadows, PresentationControls, Float, Environment, useGLTF } from '@react-three/drei'
-import { Camera } from 'three'
 import { useEffect, useRef, useState } from 'react'
-import { useFrame } from '@react-three/fiber';
 import {soundOn, soundOff} from './assets/icons/index.js';
 import audioDevfolio from '../public/music/dev.mp3';
 
@@ -9,11 +7,13 @@ export default function Experience() {
     //Loads a MacBook 3D model.
     const computer = useGLTF('https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/models/macbook/model.gltf')
 
-
-    //State to handle the color change of the sphere on click.
+    // reference to camera controls
     const controls = useRef();
+
+    // initialize audio element and track play state
     const audioRef = useRef(null)
     const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+    // Intro animation
     const intro = async () => {
         controls.current.dolly(-22)
         controls.current.smoothTime = 1.6
