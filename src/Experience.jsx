@@ -13,6 +13,7 @@ export default function Experience() {
     // initialize audio element and track play state
     const audioRef = useRef(null)
     const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+   
     // Intro animation
     const intro = async () => {
         controls.current.dolly(-22)
@@ -28,6 +29,7 @@ export default function Experience() {
 
 
 // Setup audio and autoplay on mount
+/*
 useEffect(() => {
   audioRef.current = new Audio(audioDevfolio)
   audioRef.current.loop = true
@@ -58,7 +60,23 @@ useEffect(() => {
   } else {
     audioRef.current.pause()
   }
-}, [isPlayingMusic])
+}, [isPlayingMusic]) */
+
+// Background color cycle
+  const colors = ['#000', '#F3F2EC', '#ffcc00', '#e0e0e0', '#ff69b4', '#DCDCDC'] // cycle list
+  const [bg, setBg] = useState(colors[0])
+  const iframeRef = useRef(null)
+
+  // Change background color every few seconds
+    useEffect(() => {
+    let i = 0
+    const interval = setInterval(() => {
+      i = (i + 1) % colors.length
+      setBg(colors[i])
+    }, 2000) // change every 2 seconds
+    return () => clearInterval(interval)
+  }, [])
+
 
     useEffect(() => {
     intro()
@@ -70,8 +88,8 @@ useEffect(() => {
 
         <Environment preset='city' />
 
-        
-        <color args={['#000']} attach="background" />
+
+        <color args={[bg]} attach="background" />
 
 
         <PresentationControls
@@ -108,7 +126,10 @@ useEffect(() => {
                         position={[0, 1.56, -1.4]}
                         rotation-x={-.256}
                     >
-                        <iframe src='https://hr-devfolio.netlify.app/' />
+                        <iframe
+                          ref={iframeRef}
+                          src='https://hr-devfolio.netlify.app/'
+                        />
                     </Html>
 
 
@@ -136,6 +157,14 @@ useEffect(() => {
             scale={5}
             blur={2.4}
         />
+
+    </>
+
+
+}
+
+/*
+
         <Html fullscreen>
         <div className='hidden-icon-desktop'>
             <img
@@ -146,7 +175,4 @@ useEffect(() => {
             />
         </div>
         </Html>
-    </>
-
-
-}
+*/
